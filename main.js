@@ -31,6 +31,7 @@ var songs = {
     wrong: "audio/wrong.wav",
     good: "audio/goodAnswer2.wav",
     bad: "audio/badAnswer.mp3",
+    turiruri: "audio/turiruri.mp3",
   };
 
 function Board(bgSource){
@@ -350,9 +351,13 @@ function startDeckGame(){
 //Fin de Decklicious
 
 //Inicio de Keylicious
-var notes, note1, note2, note3, intervaloKey, rightArea;
+var notes, note1, note2, note3, intervaloKey, rightArea, randomNote;
 var pointsKey = 0;
-var frames = 0;
+var count = 0;
+var timeCount = 0;
+//var musicTime = [142 - 142, 159 - 142, 176 - 142, 281 - 142, 303 - 142, 322 - 142, 425 - 142, 451 - 142, 574 - 142, 600 - 142, 622 - 142, 709 - 142, 735 - 142, 769 - 142, 808 - 142, 846 - 142, 867 - 142, 887 - 142, 916 - 142, 946 - 142];
+var musicTime = [0, 17, 34, 139, 161, 180, 283, 309, 432, 458, 480, 567, 593, 627, 666, 704, 725, 745, 774, 804];
+var musicTrack = [];
 
 function CheckCollition(){
     this.crashWith = function(item){
@@ -370,6 +375,7 @@ function Note(x, y, width, height, color, sourceWrongAns){
     this.width = width;
     this.height = height;
     this.color = color;
+    this.text = "Ready?";
     this.wrongAnswerAudio = new Audio();
     this.wrongAnswerAudio.src = sourceWrongAns;
     this.draw = function(){
@@ -379,6 +385,13 @@ function Note(x, y, width, height, color, sourceWrongAns){
     this.fall = function(){
         this.y += 3;
     }
+}
+
+function drawPointsKey(){
+    ctx.font = "40px Sigmar One";
+    ctx.fillStyle = "white";
+    ctx.fillText("Points: ", 30, 50);
+    ctx.fillText(pointsKey + "/21", 30, 100);
 }
 
 function TapArea(color){
@@ -394,12 +407,8 @@ function TapArea(color){
         ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.globalAlpha=1;
     }
-}
-
-function drawWord(x,y,word){
-    ctx.font = "40px Sigmar One";
-    ctx.fillStyle = "white";
-    ctx.fillText(word, x, y);
+    this.song = new Audio;
+    this.song.src = songs.turiruri;
 }
 
 function startKeyGame(){
@@ -411,20 +420,122 @@ function startKeyGame(){
     note1 = new Note(283, 0, 50, 50, "white", songs.bad);
     note2 = new Note(426, 0, 50, 50, "white", songs.bad);
     note3 = new Note(570, 0, 50, 50, "white", songs.bad);
-    notes = [note1, note2, note3];
+    note4 = new Note(283, 0, 50, 50, "white", songs.bad);
+    note5 = new Note(426, 0, 50, 50, "white", songs.bad);
+    note6 = new Note(570, 0, 50, 50, "white", songs.bad);
+    note7 = new Note(283, 0, 50, 50, "white", songs.bad);
+    note8 = new Note(426, 0, 50, 50, "white", songs.bad);
+    note9 = new Note(570, 0, 50, 50, "white", songs.bad);
+    note10 = new Note(283, 0, 50, 50, "white", songs.bad);
+    note11 = new Note(426, 0, 50, 50, "white", songs.bad);
+    note12 = new Note(570, 0, 50, 50, "white", songs.bad);
+    note13 = new Note(283, 0, 50, 50, "white", songs.bad);
+    note14 = new Note(426, 0, 50, 50, "white", songs.bad);
+    note15 = new Note(570, 0, 50, 50, "white", songs.bad);
+    note16 = new Note(283, 0, 50, 50, "white", songs.bad);
+    note17 = new Note(426, 0, 50, 50, "white", songs.bad);
+    note18 = new Note(570, 0, 50, 50, "white", songs.bad);
+    note19 = new Note(283, 0, 50, 50, "white", songs.bad);
+    note20 = new Note(426, 0, 50, 50, "white", songs.bad);
+    note21 = new Note(570, 0, 50, 50, "white", songs.bad);
+    notes = [note1,note2,note3,note4,note5,note6,note7,note8,note9,note10,note11,note12,note13,note14,note15,note16,note17,note18,note19,note20,note21];
     rightArea = new TapArea("red");
-    interval = setInterval(updateGame, 1000/60)
+    clearTO7 = setTimeout(function(){
+    rightArea.song.play();
+    }, 1150);
+    interval = setInterval(updateGame, 1000/100)
 }
 
 function updateGame(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     board.draw();
     rightArea.draw();
-    notes.forEach(function(note){
-        note.draw();
-        note.fall();
-    });
-    frames++;
+    notes[0].draw();
+    notes[0].fall();
+    drawPointsKey();
+    clearTO9 = setTimeout(function(){
+        notes[1].draw();
+        notes[1].fall();
+    }, 300);
+    clearTO9 = setTimeout(function(){
+        notes[2].draw();
+        notes[2].fall();
+    }, 500);
+    clearTO9 = setTimeout(function(){
+        notes[3].draw();
+        notes[3].fall();
+    }, 2300);
+    clearTO9 = setTimeout(function(){
+        notes[4].draw();
+        notes[4].fall();
+    }, 2600);
+    clearTO9 = setTimeout(function(){
+        notes[5].draw();
+        notes[5].fall();
+    }, 2800);
+    clearTO9 = setTimeout(function(){
+        notes[6].draw();
+        notes[6].fall();
+    }, 4600);
+    clearTO9 = setTimeout(function(){
+        notes[7].draw();
+        notes[7].fall();
+    }, 4900);
+    clearTO9 = setTimeout(function(){
+        notes[8].draw();
+        notes[8].fall();
+    }, 5100);
+    clearTO9 = setTimeout(function(){
+        notes[9].draw();
+        notes[9].fall();
+    }, 6900);
+    clearTO9 = setTimeout(function(){
+        notes[10].draw();
+        notes[10].fall();
+    }, 7200);
+    clearTO9 = setTimeout(function(){
+        notes[11].draw();
+        notes[11].fall();
+    }, 7400);
+    //se acaba turiruri
+    clearTO9 = setTimeout(function(){
+        notes[12].draw();
+        notes[12].fall();
+    }, 9800);
+    clearTO9 = setTimeout(function(){
+        notes[13].draw();
+        notes[13].fall();
+    }, 10200);
+    clearTO9 = setTimeout(function(){
+        notes[14].draw();
+        notes[14].fall();
+    }, 10700);
+    clearTO9 = setTimeout(function(){
+        notes[15].draw();
+        notes[15].fall();
+    }, 11100);
+    clearTO9 = setTimeout(function(){
+        notes[16].draw();
+        notes[16].fall();
+    }, 11400);
+    clearTO9 = setTimeout(function(){
+        notes[17].draw();
+        notes[17].fall();
+    }, 11700);
+    clearTO9 = setTimeout(function(){
+        notes[18].draw();
+        notes[18].fall();
+    }, 12000);
+    clearTO9 = setTimeout(function(){
+        notes[19].draw();
+        notes[19].fall();
+    }, 12500);
+    clearTO9 = setTimeout(function(){
+        notes[20].draw();
+        notes[20].fall();
+    }, 13000);
+      
+    timeCount++;
   }
 
 window.onload = function() {
@@ -491,60 +602,167 @@ document.onkeydown = function(e) {
     if(active === 3){
         switch(e.keyCode){
             case 39: //-->
+                timeCount = 0;
                 if(note3.crashWith(rightArea)){
-                    if(note3.y === 420)
-                    {
-                        notes.splice(2,1);
-                        pointsKey += 2; 
-                        drawWord(100,250,"PERFECT!");
-                    } else if (note3.y >= 395 && note3.y >= 445){
-                        notes.splice(2,1);
-                        pointsKey++;
-                        drawWord(100,250,"GOOD!");
-                    }
+                    note3.text = "GOOD!";
+                    note3.color = "";
+                    pointsKey++; 
+                    console.log(pointsKey);
                 } else {
-                    notes.splice(2,1);
-                    note3.wrongAnswerAudio.play();
+                    note3.text = "MISS!";
+                    //note3.wrongAnswerAudio.play();
+                }  
+                if(note6.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note9.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note12.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note15.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note18.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note21.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
                 }
             break;
             case 37: //<--
+                //timeCount = 0;
                 if(note1.crashWith(rightArea)){
-                    if(note1.y === 420)
-                    {
-                        notes.splice(0,1);
-                        pointsKey += 2; 
-                        drawWord(100,250,"PERFECT!");
-                    } else if (note1.y >= 395 && note1.y >= 445){
-                        notes.splice(0,1);
-                        pointsKey++;
-                        drawWord(100,250,"GOOD!");
-                    }
+                    note1.text = "GOOD!";
+                    pointsKey++; 
                 } else {
-                    notes.splice(0,1);
-                    note1.wrongAnswerAudio.play();
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note4.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    notes.color = "";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note7.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note10.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note13.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note16.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
+                }
+                if(note19.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note1.wrongAnswerAudio.play();
                 }
             break;
             case 38: //Up arrow
+                timeCount = 0;
                 if(note2.crashWith(rightArea)){
-                    if(note2.y === 420)
-                    {
-                        notes.splice(1,1);
-                        pointsKey += 2; 
-                        drawWord(100,250,"PERFECT!");
-                    } else if (note2.y >= 395 && note2.y >= 445){
-                        notes.splice(1,1);
-                        pointsKey++;
-                        drawWord(100,250,"GOOD!");
-                    }
+                    note1.text = "GOOD!";
+                    note2.color = "";
+                    pointsKey++; 
                 } else {
-                    notes.splice(1,1);
-                    note2.wrongAnswerAudio.play();
-                } 
+                    note1.text = "MISS!";
+                    //note2.wrongAnswerAudio.play();
+                }
+                if(note5.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note2.wrongAnswerAudio.play();
+                }
+                if(note8.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note2.wrongAnswerAudio.play();
+                }
+                if(note11.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note2.wrongAnswerAudio.play();
+                }
+                if(note14.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note2.wrongAnswerAudio.play();
+                }
+                if(note17.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note2.wrongAnswerAudio.play();
+                }
+                if(note20.crashWith(rightArea)){
+                    note1.text = "GOOD!";
+                    pointsKey++; 
+                } else {
+                    note1.text = "MISS!";
+                    //note2.wrongAnswerAudio.play();
+                }
             break;
         }
     }
 }  
-
-
   
   
